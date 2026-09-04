@@ -1,0 +1,11 @@
+1. ¿Dónde está físicamente la máquina que acabo de crear y cómo influye la zona elegida?*
+La máquina virtual está alojada físicamente en un centro de datos de Google Cloud correspondiente a la región y zona que seleccionamos al crearla. La zona elegida influye principalmente en la latencia, la disponibilidad de determinados recursos y los costos. Elegir una zona cercana a los usuarios puede mejorar el tiempo de respuesta.
+
+2. ¿Por qué usamos gcloud desde Cloud Shell en vez de configurar la contraseña desde el propio Windows?*
+Usamos gcloud desde Cloud Shell porque permite administrar la máquina virtual de forma remota utilizando las herramientas de Google Cloud. En este caso, podemos generar o configurar las credenciales necesarias para acceder a Windows antes de ingresar mediante RDP
+
+3. ¿Qué diferencia hay entre la terminal de Cloud Shell y el escritorio al que accedemos por RDP?*
+Cloud Shell es una terminal proporcionada por Google Cloud desde la cual podemos ejecutar comandos y administrar los recursos de nuestro proyecto.Con RDP accedemos directamente al escritorio gráfico de la máquina virtual con Windows que creamos. 
+
+4. Si cerramos la ventana del RDP, ¿la máquina virtual se apaga o sigue corriendo en la nube?*
+La máquina virtual sigue corriendo en Google Cloud. Cerrar la ventana de RDP solamente finaliza nuestra conexión remota con ella, pero no apaga ni detiene la VM. Para detenerla debemos hacerlo explícitamente desde Google Cloud o mediante los comandos correspondientes. Mientras siga encendida, puede continuar consumiendo recursos y generando costos.
