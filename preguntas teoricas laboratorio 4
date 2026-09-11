@@ -1,11 +1,11 @@
-*1. ¿Dónde está físicamente la máquina que acabo de crear y cómo influye la zona elegida?*
-La máquina está en un centro de datos físico de Google Cloud correspondiente a la zona seleccionada (por ejemplo, EE. UU. o Sudamérica). La zona influye directamente en la latencia de respuesta (cuanto más cercana, más rápida), el costo del servicio y las regulaciones locales sobre el almacenamiento de datos.
+1. ¿Qué ventaja tiene desplegar la app en Cloud Run en lugar de dejarla corriendo en una máquina virtual de Compute Engine?
 
-*2. ¿Por qué usamos gcloud desde Cloud Shell en vez de configurar la contraseña desde el propio Windows?*
-Usamos gcloud en Cloud Shell porque permite inyectar o restablecer credenciales de forma remota y segura a través de la API de Google Cloud, sin necesidad de acceder previamente al sistema operativo de la máquina virtual ni depender de configuraciones manuales locales.
+Desplegar en Cloud Run ofrece una arquitectura serverless que escala automáticamente según la demanda y reduce las instancias a cero cuando no hay tráfico, eliminando costos por inactividad y la necesidad de administrar el sistema operativo o parches de seguridad que requiere una máquina virtual de Compute Engine.
 
-*3. ¿Qué diferencia hay entre la terminal de Cloud Shell y el escritorio al que accedemos por RDP?*
-Cloud Shell es una terminal Linux de comandos basada en navegador para administrar los servicios e infraestructura de tu proyecto. El escritorio RDP es la interfaz gráfica de usuario del sistema operativo Windows que se ejecuta de forma independiente dentro de tu máquina virtual.
+2. Si modificamos un texto en app.py, ¿los cambios se ven reflejados automáticamente en la URL de Cloud Run?
 
-*4. Si cerramos la ventana del RDP, ¿la máquina virtual se apaga o sigue corriendo en la nube?*
-La máquina virtual sigue corriendo en la nube. Cerrar la ventana de RDP solo interrumpe la transmisión de pantalla y control remoto, pero el servidor permanece encendido y consumiendo recursos en Google Cloud.
+Los cambios en app.py no se ven reflejados automáticamente en la URL de Cloud Run porque este servicio ejecuta imágenes de contenedor inmutables. Para actualizar la app en producción, es necesario recompilar la imagen Docker con el nuevo código y hacer un nuevo despliegue del servicio.
+
+3. ¿Cómo se comunica la app de Streamlit con Gemini?
+
+La app de Streamlit se comunica con Gemini realizando peticiones HTTP/REST mediante el SDK oficial de Google Cloud en Python. Esta integración se autentica de manera segura utilizando la cuenta de servicio (Service Account) asignada a la instancia de Cloud Run, sin necesidad de exponer API keys en el código.
